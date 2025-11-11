@@ -22,14 +22,14 @@ import { Icon } from "astro-icon/components";
         {[
           { href: "/#servicos", text: "Serviços" },
           { href: "/#diferenciais", text: "Diferenciais" },
-          { href: "/#clientes", text: "Clientes" },
           { href: "/#portfolio", text: "Portfolio" },
+          { href: "/#clientes", text: "Clientes" },
           { href: "/#sobre", text: "Sobre" },
           { href: "/#faq", text: "FAQ" },
         ].map((item) => (
           <a
             href={item.href}
-            class="relative px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors overflow-hidden group h-10 flex items-center"
+            class="relative px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors overflow-hidden group h-10 flex items-center"
           >
             <span
               class="relative z-10 block transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
@@ -47,7 +47,7 @@ import { Icon } from "astro-icon/components";
       <div class="hidden lg:inline-flex">
         <Button
           text="Fale conosco"
-          href="https://calendly.com/ani-positivestudio/30min"
+          href="https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor."
         >
           <IconWhatsapp slot="icon" class="w-5 h-5 -ms-1" />
         </Button>
@@ -92,8 +92,8 @@ import { Icon } from "astro-icon/components";
       {[
         { href: "/#servicos", text: "Serviços" },
         { href: "/#diferenciais", text: "Diferenciais" },
-        { href: "/#clientes", text: "Clientes" },
         { href: "/#portfolio", text: "Portfolio" },
+        { href: "/#clientes", text: "Clientes" },
         { href: "/#sobre", text: "Sobre" },
         { href: "/#faq", text: "FAQ" },
       ].map((link) => (

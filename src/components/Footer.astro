@@ -1,7 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
 import logo from "../assets/images/logo-gravasteel.webp";
-import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
+
+import Background from "../assets/images/gravasteel-footer-background.webp";
 
 const footerData = {
    logo: logo,
@@ -9,15 +10,16 @@ const footerData = {
       "Mais de 15 anos de excelência em gravações a laser de alta precisão. Vamos conversar sobre o seu projeto?",
    email: "administrativo@gravasteel.com.br",
    phone: "(54) 98117-1189",
-   address: "Rua Bento Gonçalves, 1234 - Caxias do Sul / RS",
-   mapLink:
-      "https://maps.google.com/?q=Rua+Bento+Gonçalves,+1234,+Caxias+do+Sul,+RS",
+   address: "Av. Avenida França 1177, Loja 01",
+   city: "Caxias do Sul, Rio Grande do sul",
+   zipcode: 'CEP 95076-000',
+   mapLink: "https://maps.app.goo.gl/cxJydAZkZMkmFhaN8",
    hours: "Seg a Sex, das 8h às 18h",
    navLinks: [
       { href: "#servicos", text: "Serviços" },
       { href: "#diferenciais", text: "Diferenciais" },
-      { href: "#clientes", text: "Clientes" },
       { href: "#portfolio", text: "Portfolio" },
+      { href: "#clientes", text: "Clientes" },
       { href: "#sobre", text: "Sobre" },
       { href: "#faq", text: "Perguntas Frequentes" },
    ],
@@ -43,8 +45,19 @@ const footerData = {
 <footer
    class="relative bg-zinc-800 text-white overflow-hidden border-t border-white/10"
 >
+
+<div
+      style={`background-image: url(${Background.src});`}
+      class="absolute inset-0 z-1 bg-cover bg-center mix-blend-multiply opacity-70"
+   >
+      <div
+         class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-white/60 white "
+      >
+      </div>
+   </div>
+
    <div
-      class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 flex flex-col md:flex-row justify-between gap-12"
+      class="relative z-10 max-w-7xl w-[95%]  mx-auto px-6 lg:px-8 py-24 flex flex-col md:flex-row justify-between gap-12"
    >
       <!-- Coluna esquerda -->
       <div class="flex-1 max-w-3xl">
@@ -109,8 +122,10 @@ const footerData = {
             <p class="text-zinc-50 text-sm mb-6">{footerData.hours}</p>
 
             <!-- Endereço + link -->
-            <div>
-               <p class="text-zinc-50 text-sm">{footerData.address}</p>
+            <div class="mb-6">
+               <p class="text-zinc-50 text-sm mb-1">{footerData.address}</p>
+               <p class="text-zinc-50 text-sm mb-1">{footerData.city}</p>
+               <p class="text-zinc-50 text-sm mb-2">{footerData.zipcode}</p>
                <a
                   href={footerData.mapLink}
                   target="_blank"
@@ -129,58 +144,8 @@ const footerData = {
                   </span>
                </a>
             </div>
-         </div>
-      </div>
 
-      <!-- Coluna direita (menu) -->
-      <div class="flex flex-col items-start md:items-end justify-center space-y-4 text-left lg:text-right">
-         {
-            footerData.navLinks.map((link) => (
-               <a
-                  href={link.href}
-                  class="relative px-0 md:px-3 py-2  font-medium text-zinc-50 overflow-hidden group flex items-center justify-start lg:justify-end h-10"
-               >
-                  <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                     {link.text}
-                  </span>
-                  <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
-                     {link.text}
-                  </span>
-               </a>
-            ))
-         }
-      </div>
-   </div>
-
-   <!-- Base -->
-   <div
-      class="border-t border-white/10 pt-8 pb-6 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6"
-   >
-      <div class="flex flex-col gap-1 text-xs">
-         <span class="text-zinc-50 font-semibold">
-            Gravasteel Serviços de Gravações Industriais Ltda - CNPJ
-            36.001.136/0001-63
-         </span>
-
-         <!-- Política de Privacidade com animação -->
-         <a
-            href={footerData.privacyPolicy.href}
-            class="relative inline-block text-zinc-50 overflow-hidden group h-5 mt-1"
-         >
-            <span
-               class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-            >
-               {footerData.privacyPolicy.text}
-            </span>
-            <span
-               class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white"
-            >
-               {footerData.privacyPolicy.text}
-            </span>
-         </a>
-      </div>
-
-      <!-- Redes sociais -->
+             <!-- Redes sociais -->
       <div class="flex items-center gap-4">
          {
             footerData.socials.map((social) => (
@@ -209,5 +174,58 @@ const footerData = {
             ))
          }
       </div>
+         </div>
+      </div>
+
+      <!-- Coluna direita (menu) -->
+      <div class="flex flex-col items-start md:items-end justify-center space-y-4 text-left lg:text-right">
+         {
+            footerData.navLinks.map((link) => (
+               <a
+                  href={link.href}
+                  class="relative px-0 md:px-3 py-2  font-medium text-zinc-50 overflow-hidden group flex items-center justify-start lg:justify-end h-10"
+               >
+                  <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                     {link.text}
+                  </span>
+                  <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
+                     {link.text}
+                  </span>
+               </a>
+            ))
+         }
+      </div>
+   </div>
+
+   <!-- Base -->
+   <div
+      class="border-t border-white/10 pt-8 pb-6 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6"
+   >
+      <div class="inline-flex  gap-1 text-sm">
+         <span class="text-zinc-50 font-semibold">
+            Gravasteel Serviços de Gravações Industriais Ltda - CNPJ
+            36.001.136/0001-63 
+         </span>
+
+         <span>|</span>
+         <!-- Política de Privacidade com animação -->
+         <a
+            href={footerData.privacyPolicy.href}
+            class="relative inline-block text-zinc-50 overflow-hidden group h-5"
+         >
+            <span
+               class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
+            >
+               {footerData.privacyPolicy.text}
+            </span>
+            <span
+               class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white"
+            >
+               {footerData.privacyPolicy.text}
+            </span>
+         </a>
+      </div>
+
+     
    </div>
 </footer>

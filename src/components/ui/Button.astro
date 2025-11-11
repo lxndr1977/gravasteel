@@ -1,40 +1,46 @@
 ---
 interface Props {
-  text: string;
-  href?: string;
-  variant?: "default" | "light";
-  class?: string; 
+   id?: string;
+   text: string;
+   href?: string;
+   variant?: "default" | "light";
+   class?: string;
 }
 
-const { text, href = "#", variant = "default", class: extraClass = "" }: Props = Astro.props;
+const {
+   id,
+   text,
+   href = "#",
+   variant = "default",
+   class: extraClass = "",
+}: Props = Astro.props;
 
 const baseClasses =
-  "relative text-sm font-semibold rounded overflow-hidden group transition-colors inline-flex items-center justify-center";
+   "relative text-sm font-semibold rounded overflow-hidden group transition-colors inline-flex items-center justify-center";
 
 const variants: Record<"default" | "light", string> = {
-  default: "bg-zinc-900 text-white hover:bg-zinc-800",
-  light:
-    "bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400",
+   default: "bg-zinc-900 text-white hover:bg-zinc-800",
+   light: "bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-100 hover:border-zinc-400",
 };
 
 // 🔧 Combina as classes base + variante + extras
 const classes = `${baseClasses} ${variants[variant]} ${extraClass}`.trim();
 ---
 
-<a href={href} class={classes}>
-  <!-- Estado inicial -->
-  <span
-    class="px-8 py-3 relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:-translate-y-full"
-  >
-    <slot name="icon" />
-    <span>{text}</span>
-  </span>
+<a id={id} href={href} class={classes}>
+   <!-- Estado inicial -->
+   <span
+      class="px-8 py-3 relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:-translate-y-full"
+   >
+      <slot name="icon" />
+      <span>{text}</span>
+   </span>
 
-  <!-- Estado no hover -->
-  <span
-    class="px-8 py-3 absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
-  >
-    <slot name="icon" />
-    <span>{text}</span>
-  </span>
+   <!-- Estado no hover -->
+   <span
+      class="px-8 py-3 absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+   >
+      <slot name="icon" />
+      <span>{text}</span>
+   </span>
 </a>

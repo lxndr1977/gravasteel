@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.10",
     "@astrojs/sitemap": "^3.6.0",
+    "@fancyapps/ui": "^6.1.5",
     "@fontsource/dm-sans": "^5.2.8",
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",

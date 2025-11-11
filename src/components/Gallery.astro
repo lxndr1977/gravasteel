@@ -11,6 +11,10 @@ import img8 from "../assets/images/portfolio/gravasteel-portfolio-08.webp";
 import img9 from "../assets/images/portfolio/gravasteel-portfolio-09.webp";
 import img10 from "../assets/images/portfolio/gravasteel-portfolio-10.webp";
 
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import "swiper/css";
+import "swiper/css/navigation";
+
 const galleryItems = [
   { src: img1 },
   { src: img2 },
@@ -26,7 +30,7 @@ const galleryItems = [
 ---
 
 <section id="portfolio" class="bg-zinc-100 py-24 border-t border-zinc-100">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <!-- Cabeçalho -->
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-zinc-900">Trabalhos Realizados</h2>
@@ -42,12 +46,14 @@ const galleryItems = [
           {galleryItems.map((item) => (
             <div class="swiper-slide">
               <div class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500">
-                <Image
-                  src={item.src}
-                  alt="Trabalho produzido pela Gravsteel"
-                  class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
+                <a href={item.src.src} data-fancybox="gallery">
+  <Image
+    src={item.src}
+    alt="Trabalho produzido pela Gravasteel"
+    class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+    loading="lazy"
+  />
+</a>
               </div>
             </div>
           ))}
@@ -59,12 +65,7 @@ const galleryItems = [
         class="gallery-button-prev hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
         aria-label="Anterior"
       >
-        <svg
-          class="w-6 h-6 text-zinc-800"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg class="w-6 h-6 text-zinc-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
@@ -73,12 +74,7 @@ const galleryItems = [
         class="gallery-button-next hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
         aria-label="Próximo"
       >
-        <svg
-          class="w-6 h-6 text-zinc-800"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg class="w-6 h-6 text-zinc-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
         </svg>
       </button>
@@ -87,61 +83,6 @@ const galleryItems = [
 </section>
 
 <style>
-  @import "swiper/css";
-  @import "swiper/css/navigation";
-
-  .gallerySwiper {
-    overflow: hidden;
-  }
-
-  .gallerySwiper .swiper-slide {
-    width: auto !important;
-    max-width: 500px;
-  }
-
-  .gallery-button-prev,
-  .gallery-button-next {
-    transition: all 0.3s ease;
-  }
-</style>
-
-<script>
-  import Swiper from "swiper";
-  import { Navigation, Autoplay } from "swiper/modules";
-
-  if (typeof window !== "undefined") {
-    new Swiper(".gallerySwiper", {
-      modules: [Navigation, Autoplay],
-      slidesPerView: 1.2,
-      spaceBetween: 24,
-      centeredSlides: false,
-      loop: true,
-      speed: 800,
-      autoplay: false,
-      navigation: {
-        nextEl: ".gallery-button-next",
-        prevEl: ".gallery-button-prev",
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 32,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 40,
-        },
-      },
-    });
-  }
-</script>
-
-
-<style>
-  @import 'swiper/css';
-  @import 'swiper/css/navigation';
-
-  
   .gallerySwiper {
     width: 100%;
     padding: 20px 0;
@@ -149,6 +90,12 @@ const galleryItems = [
 
   .swiper-slide {
     height: auto;
+    max-width: 480px;
+  }
+
+  .gallery-button-prev,
+  .gallery-button-next {
+    transition: all 0.3s ease;
   }
 
   .gallery-button-prev.swiper-button-disabled,
@@ -158,30 +105,35 @@ const galleryItems = [
   }
 </style>
 
-<script>
-  import Swiper from 'swiper';
-  import { Navigation } from 'swiper/modules';
-  
-  
-  // Inicializa Swiper
-  new Swiper('.gallerySwiper', {
+<script >
+  import Swiper from "swiper";
+  import { Navigation } from "swiper/modules";
+  import { Fancybox } from "@fancyapps/ui";
+
+  // Swiper
+  const swiper = new Swiper(".gallerySwiper", {
     modules: [Navigation],
-    slidesPerView: 'auto',
-    spaceBetween: 20,
+    slidesPerView: "auto",
+    spaceBetween: 24,
     loop: true,
     navigation: {
-      nextEl: '.gallery-button-next',
-      prevEl: '.gallery-button-prev',
+      nextEl: ".gallery-button-next",
+      prevEl: ".gallery-button-prev",
     },
     breakpoints: {
-      640: {
-        slidesPerView: 2.25,
-        spaceBetween: 24,
-      },
-      1024: {
-        slidesPerView: 4.25,
-        spaceBetween: 24,
-      },
+      640: { slidesPerView: 2.25 },
+      1024: { slidesPerView: 4.25 },
     },
+  });
+
+  // Fancybox
+  Fancybox.bind('[data-fancybox="gallery"]', {
+      Carousel: {
+    Thumbs: {
+      showOnStart: false,
+    },
+  },
+    Toolbar: { display: ["close"] },
+    dragToClose: true,
   });
 </script>
