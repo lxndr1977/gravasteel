@@ -1,0 +1,193 @@
+---
+import { SEO } from "astro-seo";
+
+export interface Props {
+   title?: string;
+   description?: string;
+   canonical?: string;
+   ogImage?: string;
+   keywords?: string;
+   structuredData?: object;
+}
+
+const {
+   title = "Soher Máquinas | Fatiadoras Industriais de Frios, Queijos e Embutidos",
+   description = "Há mais de 35 anos fabricando fatiadoras industriais com tecnologia 100% brasileira. Equipamentos robustos, eficientes e seguros para supermercados, laticínios e frigoríficos. Localizada em Porto Alegre/RS.",
+   canonical = "https://sohermaquinas.com.br",
+   ogImage = "https://sohermaquinas.com.br/og-image.jpg",
+   keywords = "fatiadoras industriais, fatiadora de frios, fatiadora de queijos, fatiadora de embutidos, máquinas industriais, equipamentos alimentícios, tecnologia brasileira, cubetadeira, lâminas rotativas, Porto Alegre, Rio Grande do Sul",
+} = Astro.props;
+
+const defaultStructuredData = {
+   "@context": "https://schema.org",
+   "@type": ["Organization", "Manufacturer"],
+   name: "Soher Industria de Maquinas Ltda",
+   alternateName: "Soher Máquinas",
+   url: "https://sohermaquinas.com.br",
+   logo: "https://sohermaquinas.com.br/logo-soher-maquinas.svg",
+   description:
+      "Há mais de 35 anos fabricando fatiadoras industriais de frios, queijos e embutidos com tecnologia 100% brasileira. Especialista em equipamentos robustos, eficientes e seguros para a indústria alimentícia.",
+   taxID: "97412654000164",
+   address: {
+      "@type": "PostalAddress",
+      streetAddress: "Rua Francisco Pinto da Fontoura, 474",
+      addressLocality: "Porto Alegre",
+      addressRegion: "RS",
+      postalCode: "91110-310",
+      addressCountry: "BR",
+   },
+   geo: {
+      "@type": "GeoCoordinates",
+      latitude: "-29.9927",
+      longitude: "-51.1805",
+   },
+   areaServed: {
+      "@type": "Country",
+      name: "Brasil",
+   },
+   industry: "Fabricação de Máquinas e Equipamentos para Indústria Alimentícia",
+   naics: "333294",
+   foundingDate: "1990",
+   knowsAbout: [
+      "Fatiadoras Industriais",
+      "Fatiadora de Frios",
+      "Fatiadora de Queijos",
+      "Fatiadora de Embutidos",
+      "Cubetadeira",
+      "Lâminas Rotativas",
+      "Equipamentos Alimentícios",
+      "Tecnologia Nacional",
+   ],
+   hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Equipamentos Industriais",
+      itemListElement: [
+         {
+            "@type": "Offer",
+            itemOffered: {
+               "@type": "Product",
+               name: "Fatiadora FA-150",
+               category: "Fatiadoras Industriais",
+               description: "Produção de até 150 kg/h, até 150 cortes por minuto",
+            },
+         },
+         {
+            "@type": "Offer",
+            itemOffered: {
+               "@type": "Product",
+               name: "Fatiadora FA-400",
+               category: "Fatiadoras Industriais",
+               description: "Produtividade de até 400 kg/h, até 400 fatias por minuto",
+            },
+         },
+         {
+            "@type": "Offer",
+            itemOffered: {
+               "@type": "Product",
+               name: "Fatiadora FA-600",
+               category: "Fatiadoras Industriais",
+               description: "Produtividade média de 600 kg/h, até 600 fatias por minuto",
+            },
+         },
+         {
+            "@type": "Offer",
+            itemOffered: {
+               "@type": "Product",
+               name: "Cubetadeira Evolution",
+               category: "Equipamentos Industriais",
+               description: "Produção de até 1.000 kg/h, de 50 a 160 cortes por minuto",
+            },
+         },
+         {
+            "@type": "Offer",
+            itemOffered: {
+               "@type": "Product",
+               name: "Lâminas Rotativas",
+               category: "Acessórios e Peças",
+               description: "Lâminas serrilhadas e teflonadas até 460mm, fabricação sob medida",
+            },
+         },
+      ],
+   },
+   contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+55-51-3365-6285",
+      contactType: "sales",
+      areaServed: "BR",
+      availableLanguage: "Portuguese",
+   },
+   sameAs: [
+      "https://www.instagram.com/soher.br/",
+      "https://www.facebook.com/sohermaquinas/?locale=pt_BR",
+   ],
+};
+
+const seoConfig = {
+   title,
+   description,
+   canonical,
+   openGraph: {
+      basic: {
+         title,
+         type: "website",
+         image: ogImage,
+         url: canonical,
+      },
+      optional: {
+         description,
+         locale: "pt_BR",
+         siteName: "Soher Máquinas",
+      },
+   },
+   structuredData: {
+      ...defaultStructuredData,
+      ...Astro.props.structuredData,
+   },
+   extend: {
+      link: [
+         { rel: "icon", href: "/favicon.ico" },
+         {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/apple-touch-icon.png",
+         },
+         {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: "/favicon-32x32.png",
+         },
+         {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: "/favicon-16x16.png",
+         },
+      ],
+      meta: [
+         { name: "keywords", content: keywords },
+         { name: "author", content: "Soher Máquinas" },
+         {
+            name: "robots",
+            content:
+               "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+         },
+         { name: "theme-color", content: "e7000b" },
+         { name: "geo.region", content: "BR-RS" },
+         { name: "geo.country", content: "Brasil" },
+         { name: "geo.placename", content: "Porto Alegre" },
+         { property: "og:type", content: "website" },
+         { property: "og:locale", content: "pt_BR" },
+         {
+            name: "business.contact_data.street_address",
+            content: "Rua Francisco Pinto da Fontoura, 474",
+         },
+         { name: "business.contact_data.locality", content: "Porto Alegre" },
+         { name: "business.contact_data.region", content: "RS" },
+         { name: "business.contact_data.postal_code", content: "91110-310" },
+      ],
+   },
+};
+---
+
+<SEO {...seoConfig} />

@@ -1,0 +1,36 @@
+---
+/**
+ * Props:
+ * - text: string — texto exibido no botão
+ * - href: string — link (opcional)
+ */
+const { text, href = "#" } = Astro.props;
+---
+
+<a
+  href={href}
+  class="relative inline-flex items-center gap-2.5 ps-5 pe-3 py-2.5 bg-zinc-700 text-white text-sm font-semibold rounded-md hover:bg-zinc-600 transition-colors group overflow-hidden"
+>
+  <!-- Arrow Icon Left (hidden, slides in on hover) -->
+  <svg
+    class="w-4 h-4 transition-all duration-300 -translate-x-[250%] opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+    viewBox="0 0 448 512"
+    fill="currentColor"
+  >
+    <path
+      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+    />
+  </svg>
+
+  <!-- Text (moves with arrow on hover) -->
+  <span class="transition-all duration-300 -translate-x-6 group-hover:translate-x-0">
+    {text}
+  </span>
+
+  <!-- Circle with Right Icon (slides out on hover) -->
+  <div
+    class="w-8 h-8 text-zinc-800 bg-zinc-100 rounded flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:translate-x-[250%] group-hover:opacity-0"
+  >
+    <slot name="icon" />
+  </div>
+</a>

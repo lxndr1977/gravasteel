@@ -1,0 +1,80 @@
+---
+import Image from "astro/components/Image.astro";
+import img from "../assets/images/gravasteel-maquinario.webp";
+
+const sectionData = {
+  badge: "Recursos",
+  title: "Tecnologia Gravasteel",
+  image: img,
+  items: [
+    {
+      title: "Gravadoras a laser",
+      description:
+        "Gravadoras a laser de 30W (2020) com espelho sísmico de alta velocidade e controle servo-óptico.",
+    },
+    {
+      title: "Bases fixas",
+      description:
+        "Bases fixas com torre de foco para peças pequenas (200 x 200 mm).",
+    },
+    {
+      title: "Braços articulados",
+      description:
+        "Braços articulados com alcance de até 2,5 m",
+    },
+    {
+      title: "Bases cilíndricas",
+      description:
+        "Bases cilíndricas para gravações internas e externas em pinos, anéis e postiços.",
+    },
+    {
+      title: "Lentes de precisão",
+      description:
+        "Lentes de alta precisão para gravações planas em uma única etapa (até 200 x 200 mm).",
+    },
+  ], 
+};
+---
+
+<section id="tecnologia" class="bg-white py-24">
+  <div class="max-w-5xl mx-auto  px-6 lg:px-8 text-center">
+    <span
+      class="inline-block text-xs font-medium tracking-[0.25rem] uppercase text-zinc-600 bg-zinc-100 px-6 py-2 rounded"
+    >
+      {sectionData.badge}
+    </span>
+
+    <h2
+      class="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 leading-tight text-balance"
+    >
+      {sectionData.title}
+    </h2>
+  </div>
+
+  <div class="max-w-7xl mx-auto pt-24 px-6 flex flex-col lg:flex-row-reverse gap-12 md:gap-24">
+    <!-- COLUNA ESQUERDA -->
+    <div id="resources-list" class="w-full lg:w-1/2 space-y-12">
+      {sectionData.items.map((item) => (
+        <div class="resource-item space-y-4">
+          <h3 class="text-2xl font-semibold text-gray-900">{item.title}</h3>
+          <p class="text-gray-600 leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- COLUNA DIREITA (IMAGEM ÚNICA) -->
+    <div class="w-full lg:w-1/2">
+      <div class="sticky top-48">
+        <div
+          class="rounded-2xl overflow-hidden shadow-xl transition-all duration-700 ease-in-out"
+        >
+          <Image
+            src={sectionData.image}
+            alt="Diferenciais Gravasteel"
+            class="w-full h-auto object-cover transition-opacity duration-700"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

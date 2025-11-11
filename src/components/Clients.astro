@@ -1,0 +1,143 @@
+---
+import Image from "astro/components/Image.astro";
+
+import logo1 from "../assets/images/logos/logo-aeromatrizes.webp";
+import logo2 from "../assets/images/logos/logo-galvanotek.webp";
+import logo3 from "../assets/images/logos/logo-braslux.webp";
+import logo4 from "../assets/images/logos/logo-apolo.webp";
+import logo5 from "../assets/images/logos/logo-redan.webp";
+import logo6 from "../assets/images/logos/logo-orion.webp";
+import logo7 from "../assets/images/logos/logo-bepo.webp";
+import logo8 from "../assets/images/logos/logo-zampieri.webp";
+import logo9 from "../assets/images/logos/logo-massochini.webp";
+import logo10 from "../assets/images/logos/logo-cicma.webp";
+import logo11 from "../assets/images/logos/logo-acrilys.webp";
+
+const clients = [
+  { src: logo1, alt: "Aeromatrizes" },
+  { src: logo2, alt: "Galvanotek" },
+  { src: logo3, alt: "Braslux" },
+  { src: logo4, alt: "Apolo" },
+  { src: logo5, alt: "Redan" },
+  { src: logo6, alt: "Orion" },
+  { src: logo7, alt: "Bepo" },
+  { src: logo8, alt: "Zampieri" },
+  { src: logo9, alt: "Massochini" },
+  { src: logo10, alt: "Cicma" },
+  { src: logo11, alt: "Acrilys" },
+];
+---
+  <section id="clientes" class="bg-white py-24 border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <p class="text-lg font-bold text-gray-800 tracking-wide">
+        Clientes que confiam na Gravasteel
+      </p>
+    </div>
+    <!-- Swiper Container com wrapper para gradiente -->
+    <div class="relative">
+      <div class="swiper clientsSwiper">
+        <div class="swiper-wrapper">
+          <!-- Renderiza os logos 2x para loop suave -->
+          {clients.map((client) => (
+            <div class="swiper-slide flex items-center justify-center">
+              <Image
+                src={client.src}
+                alt={client.alt}
+                class="h-28 w-auto hover:-mt-1 transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
+          ))}
+          {clients.map((client) => (
+            <div class="swiper-slide flex items-center justify-center">
+              <Image
+                src={client.src}
+                alt={client.alt}
+                class="h-28 w-auto hover:-mt-1 transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <!-- Gradientes laterais -->
+      <div class="gradient-left"></div>
+      <div class="gradient-right"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import 'swiper/css';
+  
+  .clientsSwiper {
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+  }
+  
+  .swiper-slide {
+    width: auto !important;
+    height: auto;
+  }
+  
+  /* Gradientes laterais */
+  .gradient-left,
+  .gradient-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  .gradient-left {
+    left: 0;
+    background: linear-gradient(to right, rgb(255, 255, 255), transparent);
+  }
+  
+  .gradient-right {
+    right: 0;
+    background: linear-gradient(to left, rgb(255, 255, 255), transparent);
+  }
+  
+  /* Responsivo: gradientes menores em mobile */
+  @media (max-width: 640px) {
+    .gradient-left,
+    .gradient-right {
+      width: 80px;
+    }
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay } from 'swiper/modules';
+  
+  new Swiper('.clientsSwiper', {
+    modules: [Autoplay],
+    slidesPerView: 'auto',
+    spaceBetween: 48,
+    loop: true,
+    speed: 5000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    allowTouchMove: true,
+    breakpoints: {
+      320: {
+        spaceBetween: 32,
+      },
+      640: {
+        spaceBetween: 48,
+      },
+      1024: {
+        spaceBetween: 64,
+      },
+    },
+  });
+</script>

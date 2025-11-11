@@ -1,0 +1,88 @@
+---
+import Image from "astro/components/Image.astro";
+import img from "../assets/images/gravasteel-modelo-gravacao-laser.webp";
+
+const sectionData = {
+   badge: "Diferenciais",
+   title: "Padrão Gravasteel: precisão, durabilidade e eficiência",
+   image: img,
+   items: [
+      {
+         title: "Gravação permanente",
+         description:
+            "As marcas geradas pelo processo a laser possuem alta durabilidade e resistência a fatores ambientais, sem sofrer desgastes por contato com gases, agentes químicos ou variações bruscas de temperatura.",
+      },
+      {
+         title: "Alta precisão",
+         description:
+            "Equipamentos de última geração, com espelho sísmico de alta velocidade e controle servo fotoelétrico, garantem o máximo desempenho em precisão e alinhamento.",
+      },
+      {
+         title: "Flexibilidade e velocidade",
+         description:
+            "Braço articulado com movimentação em 6 eixos, oferecendo diversas possibilidades de posicionamento e alcance. Essa estrutura garante agilidade, precisão e qualidade",
+      },
+      {
+         title: "Tempo de parada reduzido",
+         description:
+            "Processo de gravação otimizado que reduz o tempo de parada do molde em até 3 vezes em relação às gravações químicas, com preparação antecipada da arte e eliminação do manuseio químico e tempo de cura.",
+      },
+      {
+         title: "Redução de custos",
+         description:
+            "A tecnologia a laser permite substituir processos de eletroerosão em aplicações de até 0,3 mm, eliminando etapas como CAM, usinagem de eletrodos e o próprio processo de erosão.",
+      },
+   ],
+};
+---
+
+<section id="diferenciais" class="bg-zinc-50 py-24">
+   <div class="max-w-5xl mx-auto text-center">
+      <span
+         class="inline-block text-xs font-medium tracking-[0.25rem] uppercase text-zinc-600 bg-zinc-100 px-6 py-2 rounded"
+      >
+         {sectionData.badge}
+      </span>
+
+      <h2
+         class="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 leading-tight text-balance"
+      >
+         {sectionData.title}
+      </h2>
+   </div>
+
+   <div
+      class="max-w-7xl mx-auto pt-24 px-6 flex flex-col lg:flex-row gap-12 md:gap-24"
+   >
+      <!-- COLUNA ESQUERDA -->
+      <div id="resources-list" class="w-full lg:w-1/2 space-y-12">
+         {
+            sectionData.items.map((item) => (
+               <div class="resource-item space-y-4">
+                  <h3 class="text-2xl font-semibold text-gray-900">
+                     {item.title}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">
+                     {item.description}
+                  </p>
+               </div>
+            ))
+         }
+      </div>
+
+      <!-- COLUNA DIREITA (IMAGEM ÚNICA) -->
+      <div class="w-full lg:w-1/2">
+         <div class="sticky top-48">
+            <div
+               class="rounded-2xl overflow-hidden shadow-xl transition-all duration-700 ease-in-out"
+            >
+               <Image
+                  src={sectionData.image}
+                  alt="Diferenciais Gravasteel"
+                  class="w-full h-auto object-cover transition-opacity duration-700"
+               />
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

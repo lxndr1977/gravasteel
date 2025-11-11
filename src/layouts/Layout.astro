@@ -1,22 +1,72 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsappButton from "../components/WhatsappButton.astro";
+
+import "@fontsource/plus-jakarta-sans";
+import "@fontsource/plus-jakarta-sans/500.css"; /* Medium */
+import "@fontsource/plus-jakarta-sans/600.css"; /* SemiBold */
+
+import PrivacyModal from "../components/PrivacyModal.astro";
+import "../assets/css/style.css";
+
+interface Props {
+   title?: string;
+   description?: string;
+   canonical?: string;
+   ogImage?: string;
+   keywords?: string;
+   structuredData?: object;
+}
+
+const { title, description, canonical, ogImage, keywords, structuredData } =
+   Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="pt_BR">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="generator" content={Astro.generator} />
+
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="generator" content={Astro.generator} />
+      <link rel="sitemap" href="/sitemap-index.xml" />
+
+
+            <!-- <Seo
+         title={title}
+         description={description}
+         canonical={canonical ||
+            (currentLanguage === "es" ? canonicalEs : canonicalPt)}
+         ogImage={ogImage}
+         keywords={keywords}
+         structuredData={structuredData}
+      /> -->
+   </head>
+   <body>
+      <Header />
+
+      <slot />
+
+      <PrivacyModal />
+
+      <Footer />
+
+      <WhatsappButton />
+   </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+   html,
+   body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: "Plus Jakarta Sans", sans-serif;
+   }
 </style>
