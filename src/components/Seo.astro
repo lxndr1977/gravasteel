@@ -11,114 +11,101 @@ export interface Props {
 }
 
 const {
-   title = "Soher Máquinas | Fatiadoras Industriais de Frios, Queijos e Embutidos",
-   description = "Há mais de 35 anos fabricando fatiadoras industriais com tecnologia 100% brasileira. Equipamentos robustos, eficientes e seguros para supermercados, laticínios e frigoríficos. Localizada em Porto Alegre/RS.",
-   canonical = "https://sohermaquinas.com.br",
-   ogImage = "https://sohermaquinas.com.br/og-image.jpg",
-   keywords = "fatiadoras industriais, fatiadora de frios, fatiadora de queijos, fatiadora de embutidos, máquinas industriais, equipamentos alimentícios, tecnologia brasileira, cubetadeira, lâminas rotativas, Porto Alegre, Rio Grande do Sul",
+   title = "Gravasteel | Gravações a Laser Industriais em Alta Precisão",
+   description =
+      "Gravações a laser industriais de alta precisão para moldes, placas de identificação e peças metálicas. Tecnologia avançada para gravações permanentes, nítidas e resistentes. Atendemos Caxias do Sul, Serra Gaúcha e todo o Brasil.",
+   canonical = "https://gravasteel.com.br",
+   ogImage = "https://gravasteel.com.br/og-image.jpg",
+   keywords =
+      "gravação a laser, gravação industrial, gravação de moldes, placas de identificação, gravação metálica, gravação de moldes de 100 toneladas, gravação técnica, identificação industrial, gravação profunda, gravação permanente, Caxias do Sul, Serra Gaúcha",
 } = Astro.props;
 
 const defaultStructuredData = {
    "@context": "https://schema.org",
-   "@type": ["Organization", "Manufacturer"],
-   name: "Soher Industria de Maquinas Ltda",
-   alternateName: "Soher Máquinas",
-   url: "https://sohermaquinas.com.br",
-   logo: "https://sohermaquinas.com.br/logo-soher-maquinas.svg",
+   "@type": ["Organization", "LocalBusiness"],
+   name: "Gravasteel Serviços de Gravações Industriais Ltda",
+   alternateName: "Gravasteel",
+   url: "https://gravasteel.com.br",
+   logo: "https://gravasteel.com.br/logo-gravasteel.svg",
    description:
-      "Há mais de 35 anos fabricando fatiadoras industriais de frios, queijos e embutidos com tecnologia 100% brasileira. Especialista em equipamentos robustos, eficientes e seguros para a indústria alimentícia.",
-   taxID: "97412654000164",
+      "Serviços de gravação a laser industrial com alta precisão, nitidez e durabilidade. Especialista em gravações para moldes, placas de identificação e peças metálicas de pequeno a grande porte.",
+   taxID: "36001136000163",
    address: {
       "@type": "PostalAddress",
-      streetAddress: "Rua Francisco Pinto da Fontoura, 474",
-      addressLocality: "Porto Alegre",
+      streetAddress: "Avenida França, 1177 - Loja 01",
+      addressLocality: "Caxias do Sul",
       addressRegion: "RS",
-      postalCode: "91110-310",
+      postalCode: "95076-000",
       addressCountry: "BR",
    },
    geo: {
       "@type": "GeoCoordinates",
-      latitude: "-29.9927",
-      longitude: "-51.1805",
+      latitude: "-29.1897",
+      longitude: "-51.2180",
    },
    areaServed: {
       "@type": "Country",
       name: "Brasil",
    },
-   industry: "Fabricação de Máquinas e Equipamentos para Indústria Alimentícia",
-   naics: "333294",
-   foundingDate: "1990",
+   industry: "Serviços de Gravação a Laser Industrial",
+   naics: "339999",
+   foundingDate: "2020",
    knowsAbout: [
-      "Fatiadoras Industriais",
-      "Fatiadora de Frios",
-      "Fatiadora de Queijos",
-      "Fatiadora de Embutidos",
-      "Cubetadeira",
-      "Lâminas Rotativas",
-      "Equipamentos Alimentícios",
-      "Tecnologia Nacional",
+      "Gravação a Laser Industrial",
+      "Gravação de Moldes",
+      "Gravação de Peças Técnicas",
+      "Gravação de Placas de Identificação",
+      "Gravação em Metais",
+      "Identificação Industrial",
+      "Gravação em Moldes de Grande Porte",
    ],
    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Equipamentos Industriais",
+      name: "Serviços de Gravação a Laser",
       itemListElement: [
          {
             "@type": "Offer",
             itemOffered: {
-               "@type": "Product",
-               name: "Fatiadora FA-150",
-               category: "Fatiadoras Industriais",
-               description: "Produção de até 150 kg/h, até 150 cortes por minuto",
+               "@type": "Service",
+               name: "Gravações a Laser para Moldes",
+               category: "Gravação Industrial",
+               description:
+                  "Gravações profundas, precisas e permanentes em moldes e peças metálicas — de pequenos componentes a ferramentais de até 100 toneladas.",
             },
          },
          {
             "@type": "Offer",
             itemOffered: {
-               "@type": "Product",
-               name: "Fatiadora FA-400",
-               category: "Fatiadoras Industriais",
-               description: "Produtividade de até 400 kg/h, até 400 fatias por minuto",
+               "@type": "Service",
+               name: "Placas de Identificação Industrial",
+               category: "Identificação Industrial",
+               description:
+                  "Placas técnicas para identificação de equipamentos, com gravação resistente, nítida e de longa durabilidade.",
             },
          },
          {
             "@type": "Offer",
             itemOffered: {
-               "@type": "Product",
-               name: "Fatiadora FA-600",
-               category: "Fatiadoras Industriais",
-               description: "Produtividade média de 600 kg/h, até 600 fatias por minuto",
-            },
-         },
-         {
-            "@type": "Offer",
-            itemOffered: {
-               "@type": "Product",
-               name: "Cubetadeira Evolution",
-               category: "Equipamentos Industriais",
-               description: "Produção de até 1.000 kg/h, de 50 a 160 cortes por minuto",
-            },
-         },
-         {
-            "@type": "Offer",
-            itemOffered: {
-               "@type": "Product",
-               name: "Lâminas Rotativas",
-               category: "Acessórios e Peças",
-               description: "Lâminas serrilhadas e teflonadas até 460mm, fabricação sob medida",
+               "@type": "Service",
+               name: "Gravações Técnicas e Logotipos",
+               category: "Gravação Industrial",
+               description:
+                  "Gravação de logotipos, instruções técnicas, números de série e marcações industriais com alta precisão.",
             },
          },
       ],
    },
    contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+55-51-3365-6285",
+      telephone: "+55-54-93618-3497",
+      email: "administrativo@gravasteel.com.br",
       contactType: "sales",
       areaServed: "BR",
       availableLanguage: "Portuguese",
    },
    sameAs: [
-      "https://www.instagram.com/soher.br/",
-      "https://www.facebook.com/sohermaquinas/?locale=pt_BR",
+      "https://www.instagram.com/gravasteel/",
+      "https://www.facebook.com/gravasteel/",
    ],
 };
 
@@ -136,7 +123,7 @@ const seoConfig = {
       optional: {
          description,
          locale: "pt_BR",
-         siteName: "Soher Máquinas",
+         siteName: "Gravasteel",
       },
    },
    structuredData: {
@@ -166,25 +153,25 @@ const seoConfig = {
       ],
       meta: [
          { name: "keywords", content: keywords },
-         { name: "author", content: "Soher Máquinas" },
+         { name: "author", content: "Gravasteel" },
          {
             name: "robots",
             content:
                "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
          },
-         { name: "theme-color", content: "e7000b" },
+         { name: "theme-color", content: "#1EA8DE" },
          { name: "geo.region", content: "BR-RS" },
          { name: "geo.country", content: "Brasil" },
-         { name: "geo.placename", content: "Porto Alegre" },
+         { name: "geo.placename", content: "Caxias do Sul" },
          { property: "og:type", content: "website" },
          { property: "og:locale", content: "pt_BR" },
          {
             name: "business.contact_data.street_address",
-            content: "Rua Francisco Pinto da Fontoura, 474",
+            content: "Avenida França, 1177 - Loja 01",
          },
-         { name: "business.contact_data.locality", content: "Porto Alegre" },
+         { name: "business.contact_data.locality", content: "Caxias do Sul" },
          { name: "business.contact_data.region", content: "RS" },
-         { name: "business.contact_data.postal_code", content: "91110-310" },
+         { name: "business.contact_data.postal_code", content: "95076-000" },
       ],
    },
 };

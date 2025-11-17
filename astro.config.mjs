@@ -12,7 +12,8 @@ export default defineConfig({
    vite: {
       plugins: [tailwindcss()],
    },
+   site: 'https://gravasteel.com.br',
    integrations: [icon(), sitemap()],
-     adapter: cloudflare()
+   adapter: cloudflare()
 
 });
