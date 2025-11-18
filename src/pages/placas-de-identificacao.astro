@@ -1,16 +1,94 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+import Background from "../assets/images/gravasteel-background-01.webp";
+import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
+
+import Gallery from "../components/Gallery.astro";
+
+import { pageData } from "../data/pages/placas-de-identificacao";
+
+import Header from "../components/Header.astro";
+import Clients from "../components/Clients.astro";
+import About from "../components/About.astro";
+import Faq from "../components/Faq.astro";
+import Benefits from "../components/blocks/benefits.astro";
+import Featured from "../components/blocks/featured.astro";
+
+import Image from "astro/components/Image.astro";
 ---
 
-<Layout title="Placas de Idenfificação | Gravasteel">
+<Layout title="Placas de Identificação | Gravasteel">
+   <Header {...pageData.navbarMenu} />
+
+
    <div
-      class="max-w-3xl mx-auto px-4 lg:px-8 w-full lg:w-[95%] pt-18 pb:12 lg:py-32 space-y-6"
+      style={`background-image: url(${Background.src});`}
+      class="absolute inset-0 -z-10 bg-cover bg-center opacity-20"
    >
-      <section
-         class="w-full max-w-4xl mx-auto text-primary-950 relative px-4 sm:px-6 lg:px-8"
+      <div
+         class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-white/50 to-white"
       >
-         <h1 class="text-3xl font-bold text-secondary-600 mb-4">
-            Placas de identificação
+      </div>
+   </div>
+
+   <div
+      class="relative max-w-7xl mx-auto px-4 lg:px-8 w-full lg:w-[95%] pt-28 pb-20 lg:pt-52 flex flex-col lg:flex-row items-center gap-16"
+   >
+      <!-- Coluna Esquerda -->
+      <div class="w-full  lg:w-1/2  text-left pt-20 md:pt-0">
+         <h1
+            class="text-4xl xl:text-5xl text-zinc-900 font-semibold leading-tight tracking-tight text-balance"
+         >
+            Placas de Identificação em Aço Inox (420) com Gravação a Laser
          </h1>
-      </section>
+
+         <p
+            class="mt-6 text-lg text-zinc-900 max-w-xl mx-auto lg:mx-0 font-medium mb-12"
+         >
+            Grave informações técnicas, números de série, instruções de
+            operação, logos e selos de garantia em placas inoxidáveis projetadas
+            para resistir a uso intenso, abrasão e condições severas.
+         </p>
+
+         <Button
+            text="Fale com um especialista"
+            href="https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor."
+         >
+            <IconWhatsapp slot="icon" class="w-5 h-5 -ms-1" />
+         </Button>
+      </div>
+
+      <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+         <div
+            class="relative rounded-3xl overflow-hidden shadow-2xl w-full aspect-[4/3]"
+         >
+            <Image
+               src={pageData.hero.image}
+               alt="Máquina de corte a laser"
+               class="w-full h-full object-cover"
+            />
+            <div
+               class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+            >
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <Benefits title={pageData.benefits.title} items={pageData.benefits.items} />
+
+   <Featured {...pageData.applications} />
+
+   <Gallery
+      title={pageData.gallery.title}
+      subtitle={pageData.gallery.subtitle}
+      items={pageData.gallery.items}
+   />
+
+   <Clients />
+
+   <About />
+
+   <Faq {...pageData.faq} />
 </Layout>

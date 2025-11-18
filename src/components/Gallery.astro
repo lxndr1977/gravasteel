@@ -1,41 +1,35 @@
 ---
 import Image from "astro/components/Image.astro";
-import img1 from "../assets/images/portfolio/gravasteel-portfolio-01.webp";
-import img2 from "../assets/images/portfolio/gravasteel-portfolio-02.webp";
-import img3 from "../assets/images/portfolio/gravasteel-portfolio-03.webp";
-import img4 from "../assets/images/portfolio/gravasteel-portfolio-04.webp";
-import img5 from "../assets/images/portfolio/gravasteel-portfolio-05.webp";
-import img6 from "../assets/images/portfolio/gravasteel-portfolio-06.webp";
-import img7 from "../assets/images/portfolio/gravasteel-portfolio-07.webp";
-import img8 from "../assets/images/portfolio/gravasteel-portfolio-08.webp";
-import img9 from "../assets/images/portfolio/gravasteel-portfolio-09.webp";
-import img10 from "../assets/images/portfolio/gravasteel-portfolio-10.webp";
-
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const galleryItems = [
-  { src: img1 },
-  { src: img2 },
-  { src: img3 },
-  { src: img4 },
-  { src: img5 },
-  { src: img6 },
-  { src: img7 },
-  { src: img8 },
-  { src: img9 },
-  { src: img10 },
-];
+export interface GalleryItem {
+  src: any; // pode ser import local ou URL
+  alt?: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  items: GalleryItem[];
+}
+
+const {
+  title = "Trabalhos Realizados",
+  subtitle = "Conheça alguns projetos e peças produzidas em nosso estúdio — qualidade, precisão e acabamento impecável.",
+  items = [],
+} = Astro.props;
 ---
 
 <section id="portfolio" class="bg-zinc-100 py-24 border-t border-zinc-100">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
     <!-- Cabeçalho -->
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-zinc-900">Trabalhos Realizados</h2>
+      <h2 class="text-4xl font-bold text-zinc-900">{title}</h2>
       <p class="mt-4 text-lg text-zinc-600 max-w-2xl mx-auto">
-        Conheça alguns projetos e peças produzidas em nosso estúdio — qualidade, precisão e acabamento impecável.
+        {subtitle}
       </p>
     </div>
 
@@ -43,24 +37,24 @@ const galleryItems = [
     <div class="relative">
       <div class="swiper gallerySwiper">
         <div class="swiper-wrapper">
-          {galleryItems.map((item) => (
+          {items.map((item) => (
             <div class="swiper-slide">
-              <div class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500">
-                <a href={item.src.src} data-fancybox="gallery">
-  <Image
-    src={item.src}
-    alt="Trabalho produzido pela Gravasteel"
-    class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-    loading="lazy"
-  />
-</a>
+              <div class="group relative overflow-hidden rounded-2xl shadow-md  transition-all duration-500">
+                <a href={item.src.src ?? item.src} data-fancybox="gallery">
+                  <Image
+                    src={item.src}
+                    alt={item.alt ?? "Imagem do portfólio"}
+                    class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </a>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Botões de navegação -->
+      <!-- Botões -->
       <button
         class="gallery-button-prev hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
         aria-label="Anterior"
@@ -105,12 +99,11 @@ const galleryItems = [
   }
 </style>
 
-<script >
+<script>
   import Swiper from "swiper";
   import { Navigation } from "swiper/modules";
   import { Fancybox } from "@fancyapps/ui";
 
-  // Swiper
   const swiper = new Swiper(".gallerySwiper", {
     modules: [Navigation],
     slidesPerView: 1.15,
@@ -126,14 +119,13 @@ const galleryItems = [
     },
   });
 
-  // Fancybox
+  // @ts-ignore
   Fancybox.bind('[data-fancybox="gallery"]', {
-      Carousel: {
-    Thumbs: {
-      showOnStart: false,
+    Carousel: {
+      Thumbs: { showOnStart: false },
     },
-  },
     Toolbar: { display: ["close"] },
     dragToClose: true,
   });
 </script>
+

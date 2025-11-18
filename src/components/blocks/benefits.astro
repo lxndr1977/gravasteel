@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface BenefitItem {
+   id?: string;
+   icon: string;
+   title: string;
+   description: string;
+}
+
+export interface Props {
+   id?: string;
+   title: string;
+   items: BenefitItem[];
+}
+
+const { id = undefined, title, items } = Astro.props;
+---
+
+<section
+   id={id}
+   class="relative max-w-7xl mx-auto px-4 lg:px-8 w-full lg:w-[95%] py-24"
+>
+   <div class="container mx-auto px-4">
+      <h2
+         class="text-3xl xl:text-4xl text-zinc-900 mb-20 font-semibold text-center leading-tight tracking-tight"
+      >
+         {title}
+      </h2>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+         {
+            items.map((item) => (
+               <div class="text-left">
+                  <div class="w-12 h-12 flex items-center justify-center mb-6 rounded-xl bg-zinc-900">
+                     <Icon name={item.icon} class="w-7 h-7 text-white" />
+                  </div>
+
+                  <h3 class="text-lg font-semibold text-zinc-900">
+                     {item.title}
+                  </h3>
+
+                  <p class="mt-2 text-zinc-700 font-medium">
+                     {item.description}
+                  </p>
+               </div>
+            ))
+         }
+      </div>
+   </div>
+</section>

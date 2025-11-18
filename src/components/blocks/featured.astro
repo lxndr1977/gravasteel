@@ -1,0 +1,70 @@
+---
+import Image from "astro/components/Image.astro";
+
+export interface FeatureItem {
+   id?: string;
+   title: string;
+   description: string;
+}
+
+export interface Props {
+   id?: string;
+   badge: string;
+   title: string;
+   image: any;
+   items: FeatureItem[];
+}
+
+const { id, badge, title, image, items } = Astro.props;
+---
+
+<section id={id} class="bg-zinc-50 py-24">
+   <div class="max-w-5xl mx-auto text-center">
+      <span
+         class="inline-block text-xs font-medium tracking-[0.25rem] uppercase text-zinc-600 bg-zinc-100 px-6 py-2 rounded"
+      >
+         {badge}
+      </span>
+
+      <h2
+         class="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 leading-tight text-balance"
+      >
+         {title}
+      </h2>
+   </div>
+
+   <div
+      class="max-w-7xl mx-auto pt-24 px-6 lg:px-8 flex flex-col-reverse lg:flex-row gap-12 md:gap-24"
+   >
+      <!-- COLUNA ESQUERDA -->
+      <div id="resources-list" class="w-full lg:w-1/2 space-y-12">
+         {
+            items.map((item) => (
+               <div class="resource-item space-y-4">
+                  <h3 class="text-2xl font-semibold text-gray-900">
+                     {item.title}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">
+                     {item.description}
+                  </p>
+               </div>
+            ))
+         }
+      </div>
+
+      <!-- COLUNA DIREITA (IMAGEM ÚNICA) -->
+      <div class="w-full lg:w-1/2">
+         <div class="sticky top-24">
+            <div
+               class="rounded-2xl overflow-hidden shadow-xl transition-all duration-700 ease-in-out"
+            >
+               <Image
+                  src={image}
+                  alt={title}
+                  class="w-full h-auto object-cover transition-opacity duration-700"
+               />
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

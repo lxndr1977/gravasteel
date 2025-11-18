@@ -1,231 +1,159 @@
 ---
 import Image from "astro/components/Image.astro";
-import logo from "../assets/images/logo-gravasteel.webp";
-
 import Background from "../assets/images/gravasteel-footer-background.webp";
 
-const footerData = {
-   logo: logo,
-   description:
-      "Mais de 15 anos de excelência em gravações a laser de alta precisão. Vamos conversar sobre o seu projeto?",
-   email: "administrativo@gravasteel.com.br",
-   phone: "(54) 98117-1189",
-   address: "Av. Avenida França 1177, Loja 01",
-   city: "Caxias do Sul, Rio Grande do sul",
-   zipcode: 'CEP 95076-000',
-   mapLink: "https://maps.app.goo.gl/cxJydAZkZMkmFhaN8",
-   hours: "Seg a Sex, das 8h às 18h",
-   navLinks: [
-      { href: "#servicos", text: "Serviços" },
-      { href: "#diferenciais", text: "Diferenciais" },
-      { href: "#portfolio", text: "Portfolio" },
-      { href: "#clientes", text: "Clientes" },
-      { href: "#sobre", text: "Sobre" },
-      { href: "#faq", text: "Perguntas Frequentes" },
-   ],
-   socials: [
-      {
-         name: "Instagram",
-         href: "https://instagram.com/gravasteel",
-         icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
-      },
-      {
-         name: "LinkedIn",
-         href: "https://linkedin.com/company/gravasteel",
-         icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg",
-      },
-   ],
-   privacyPolicy: {
-      text: "Política de privacidade",
-      href: "/politica-de-privacidade",
-   },
-};
+import { footerBase } from "../data/footer";
+
+export interface NavLink {
+  href: string;
+  text: string;
+}
+
+export interface Props {
+  navLinks: NavLink[];
+}
+
+const { navLinks = [] } = Astro.props;
+const footerData = footerBase;
 ---
 
 <footer
-   class="relative bg-zinc-800 text-white overflow-hidden border-t border-white/10"
+  class="relative bg-zinc-800 text-white overflow-hidden border-t border-white/10"
 >
+  <div
+    style={`background-image: url(${Background.src});`}
+    class="absolute inset-0 z-1 bg-cover bg-center mix-blend-multiply opacity-70"
+  >
+    <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-white/60 white"></div>
+  </div>
 
-<div
-      style={`background-image: url(${Background.src});`}
-      class="absolute inset-0 z-1 bg-cover bg-center mix-blend-multiply opacity-70"
-   >
-      <div
-         class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-white/60 white "
+  <div
+    class="relative z-10 max-w-7xl w-[95%] mx-auto px-6 lg:px-8 py-24 flex flex-col md:flex-row justify-between gap-12"
+  >
+    <!-- Coluna esquerda -->
+    <div class="flex-1 max-w-3xl">
+      <a href="/" class="flex-shrink-0">
+        <Image src={footerData.logo} alt="Gravasteel" class="h-10 md:h-16 w-auto" />
+      </a>
+
+      <p class="text-sm text-zinc-50 leading-relaxed mt-8 mb-8 max-w-xl text-balance">
+        {footerData.description}
+      </p>
+
+      <!-- Contato -->
+      <div class="space-y-2 mb-8">
+        <div class="flex flex-col space-y-1 mb-4">
+          <!-- Telefone -->
+          <a
+            href={`tel:${footerData.phone.replace(/\s|\(|\)|-/g, "")}`}
+            class="relative inline-flex items-center text-2xl font-semibold text-white overflow-hidden group transition-colors"
+          >
+            <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+              {footerData.phone}
+            </span>
+            <span class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-zinc-50">
+              {footerData.phone}
+            </span>
+          </a>
+
+          <!-- Email -->
+          <a
+            href={`mailto:${footerData.email}`}
+            class="relative inline-flex items-center text-zinc-50 overflow-hidden group transition-colors"
+          >
+            <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+              {footerData.email}
+            </span>
+            <span class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-zinc-50">
+              {footerData.email}
+            </span>
+          </a>
+        </div>
+
+        <p class="text-zinc-50 text-sm mb-6">{footerData.hours}</p>
+
+        <!-- Endereço -->
+        <div class="mb-6">
+          <p class="text-zinc-50 text-sm mb-1">{footerData.address}</p>
+          <p class="text-zinc-50 text-sm mb-1">{footerData.city}</p>
+          <p class="text-zinc-50 text-sm mb-2">{footerData.zipcode}</p>
+          <a
+            href={footerData.mapLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative inline-block text-xs text-zinc-50 overflow-hidden group h-6 mt-1"
+          >
+            <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+              Ver no mapa
+            </span>
+            <span class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
+              Ver no mapa
+            </span>
+          </a>
+        </div>
+
+        <!-- Redes sociais -->
+        <div class="flex items-center gap-4">
+          {footerData.socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative w-10 h-10 flex items-center justify-center rounded-full border border-white/20 overflow-hidden group transition-all duration-300 hover:border-white/40"
+              aria-label={social.name}
+            >
+              <span class="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                <img src={social.icon} alt={social.name} class="w-5 h-5 invert opacity-80 transition-opacity" />
+              </span>
+              <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0">
+                <img src={social.icon} alt={social.name} class="w-5 h-5 invert opacity-100 transition-opacity" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu lateral (navLinks da página) -->
+    <div class="flex flex-col items-start md:items-end justify-center space-y-4 text-left lg:text-right">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="relative px-0 md:px-3 py-2 font-medium text-zinc-50 overflow-hidden group flex items-center justify-start lg:justify-end h-10"
+        >
+          <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+            {link.text}
+          </span>
+          <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
+            {link.text}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Base -->
+  <div
+    class="border-t border-white/10 pt-8 pb-6 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6"
+  >
+    <div class="inline-flex gap-1 text-sm">
+      <span class="text-zinc-50 font-semibold">
+        Gravasteel Serviços de Gravações Industriais Ltda - CNPJ 36.001.136/0001-63
+      </span>
+
+      <span>|</span>
+
+      <a
+        href={footerData.privacyPolicy.href}
+        class="relative inline-block text-zinc-50 overflow-hidden group h-5"
       >
-      </div>
-   </div>
-
-   <div
-      class="relative z-10 max-w-7xl w-[95%]  mx-auto px-6 lg:px-8 py-24 flex flex-col md:flex-row justify-between gap-12"
-   >
-      <!-- Coluna esquerda -->
-      <div class="flex-1 max-w-3xl">
-         <a href="/" class="flex-shrink-0">
-            <Image
-               src={footerData.logo}
-               alt="Gravasteel"
-               class="h-10 md:h-16 w-auto"
-            />
-         </a>
-
-         <p
-            class="text-sm text-zinc-50 leading-relaxed mt-8 mb-8 max-w-xl text-balance"
-         >
-            {footerData.description}
-         </p>
-
-         <!-- Contato principal -->
-         <div class="space-y-2 mb-8">
-            <!-- Telefone -->
-            <div class="flex flex-col space-y-1 mb-4">
-               <!-- Telefone -->
-
-               <div>
-                  <a
-                     href={`tel:${footerData.phone.replace(/\s|\(|\)|-/g, "")}`}
-                     class="relative inline-flex items-center text-2xl font-semibold text-white overflow-hidden group transition-colors"
-                  >
-                     <span
-                        class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-                     >
-                        {footerData.phone}
-                     </span>
-                     <span
-                        class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-zinc-50"
-                     >
-                        {footerData.phone}
-                     </span>
-                  </a>
-               </div>
-
-               <div>
-                  <!-- Email -->
-                  <a
-                     href={`mailto:${footerData.email}`}
-                     class="relative inline-flex items-center text-zinc-50 overflow-hidden group transition-colors"
-                  >
-                     <span
-                        class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-                     >
-                        {footerData.email}
-                     </span>
-                     <span
-                        class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-zinc-50"
-                     >
-                        {footerData.email}
-                     </span>
-                  </a>
-               </div>
-            </div>
-
-            <p class="text-zinc-50 text-sm mb-6">{footerData.hours}</p>
-
-            <!-- Endereço + link -->
-            <div class="mb-6">
-               <p class="text-zinc-50 text-sm mb-1">{footerData.address}</p>
-               <p class="text-zinc-50 text-sm mb-1">{footerData.city}</p>
-               <p class="text-zinc-50 text-sm mb-2">{footerData.zipcode}</p>
-               <a
-                  href={footerData.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="relative inline-block text-xs text-zinc-50 overflow-hidden group h-6 mt-1"
-               >
-                  <span
-                     class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-                  >
-                     Ver no mapa
-                  </span>
-                  <span
-                     class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white"
-                  >
-                     Ver no mapa
-                  </span>
-               </a>
-            </div>
-
-             <!-- Redes sociais -->
-      <div class="flex items-center gap-4">
-         {
-            footerData.socials.map((social) => (
-               <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="relative w-10 h-10 flex items-center justify-center rounded-full border border-white/20 overflow-hidden group transition-all duration-300 hover:border-white/40"
-                  aria-label={social.name}
-               >
-                  <span class="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                     <img
-                        src={social.icon}
-                        alt={social.name}
-                        class="w-5 h-5 invert opacity-80 transition-opacity"
-                     />
-                  </span>
-                  <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0">
-                     <img
-                        src={social.icon}
-                        alt={social.name}
-                        class="w-5 h-5 invert opacity-100 transition-opacity"
-                     />
-                  </span>
-               </a>
-            ))
-         }
-      </div>
-         </div>
-      </div>
-
-      <!-- Coluna direita (menu) -->
-      <div class="flex flex-col items-start md:items-end justify-center space-y-4 text-left lg:text-right">
-         {
-            footerData.navLinks.map((link) => (
-               <a
-                  href={link.href}
-                  class="relative px-0 md:px-3 py-2  font-medium text-zinc-50 overflow-hidden group flex items-center justify-start lg:justify-end h-10"
-               >
-                  <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                     {link.text}
-                  </span>
-                  <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
-                     {link.text}
-                  </span>
-               </a>
-            ))
-         }
-      </div>
-   </div>
-
-   <!-- Base -->
-   <div
-      class="border-t border-white/10 pt-8 pb-6 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6"
-   >
-      <div class="inline-flex  gap-1 text-sm">
-         <span class="text-zinc-50 font-semibold">
-            Gravasteel Serviços de Gravações Industriais Ltda - CNPJ
-            36.001.136/0001-63 
-         </span>
-
-         <span>|</span>
-         <!-- Política de Privacidade com animação -->
-         <a
-            href={footerData.privacyPolicy.href}
-            class="relative inline-block text-zinc-50 overflow-hidden group h-5"
-         >
-            <span
-               class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-            >
-               {footerData.privacyPolicy.text}
-            </span>
-            <span
-               class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white"
-            >
-               {footerData.privacyPolicy.text}
-            </span>
-         </a>
-      </div>
-
-     
-   </div>
+        <span class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+          {footerData.privacyPolicy.text}
+        </span>
+        <span class="absolute inset-0 flex items-center justify-start translate-y-full transition-all duration-300 group-hover:translate-y-0 text-white">
+          {footerData.privacyPolicy.text}
+        </span>
+      </a>
+    </div>
+  </div>
 </footer>

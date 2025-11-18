@@ -56,7 +56,7 @@ const { title, description, canonical, ogImage, keywords, structuredData } =
       <link rel="sitemap" href="/sitemap-index.xml" />
 
       <Seo
-         title="Gravações a laser com precisão | Gravasteel"
+         title={title}
       />
    </head>
    <body>
@@ -69,13 +69,11 @@ const { title, description, canonical, ogImage, keywords, structuredData } =
             style="display:none;visibility:hidden"></iframe></noscript
       >
       <!-- End Google Tag Manager (noscript) -->
-      <Header />
 
       <slot />
 
       <PrivacyModal />
 
-      <Footer />
 
       <WhatsappButton />
    </body>

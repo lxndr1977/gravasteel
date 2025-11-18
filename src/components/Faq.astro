@@ -1,40 +1,19 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const sectionData = {
-  badge: "Dúvidas",
-  title: "Perguntas frequentes",
-  intro:
-    "Entenda como funciona o processo de gravação a laser da Gravasteel.",
-  items: [
-    {
-      question:
-        "O atendimento é feito apenas na Gravasteel ou também no cliente?",
-      answer:
-        "Oferecemos atendimento flexível, com gravações realizadas em nossa estrutura em Caxias do Sul ou diretamente nas instalações do cliente, conforme a necessidade e o porte das peças.",
-    },
-    {
-      question: "Quais materiais podem ser gravados a laser?",
-      answer:
-        "Realizamos gravações em aços temperados, inox, alumínio, latão, cobre e outras ligas metálicas. O processo é ajustado conforme a composição e dureza do material.",
-    },
-    {
-      question: "Existe limitação de tamanho para as peças?",
-      answer:
-        "Não. Nossos equipamentos comportam gravação a laser desde pequenas peças técnicas até ferramentais de grandes dimensões, de até 100 toneladas. Na sede da Gravasteel, a capacidade é de peças de até 500 kg; acima desse peso, o serviço é realizado diretamente nas instalações do cliente.",
-    },
-    {
-      question: "A gravação a laser substitui processos químicos ou mecânicos?",
-      answer:
-        "Sim. A gravação a laser é uma alternativa mais limpa, rápida e precisa aos métodos de corrosão química e gravações mecânicas, reduzindo custos e tempo de parada.",
-    },
-    {
-      question: "Qual é o prazo médio de execução?",
-      answer:
-        "Os prazos variam conforme a complexidade do projeto, mas na maioria dos casos a gravação é concluída em poucas horas, com possibilidade de agendamento antecipado.",
-    },
-  ],
-};
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  badge: string;
+  title: string;
+  intro: string;
+  items: FaqItem[];
+}
+
+const { badge, title, intro, items } = Astro.props;
 ---
 
 <section id="faq" class="bg-white pb-24">
@@ -44,21 +23,21 @@ const sectionData = {
       <span
         class="inline-block text-xs font-medium tracking-[0.25rem] uppercase text-zinc-600 bg-zinc-100 px-6 py-2 rounded"
       >
-        {sectionData.badge}
+        {badge}
       </span>
 
       <h2 class="mt-6 text-4xl md:text-5xl font-semibold text-gray-900">
-        {sectionData.title}
+        {title}
       </h2>
 
       <p class="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
-        {sectionData.intro}
+        {intro}
       </p>
     </div>
 
     <!-- FAQ List -->
     <div class="divide-y divide-gray-200 border-t border-b border-gray-200">
-      {sectionData.items.map((item, i) => (
+      {items.map((item, i) => (
         <div class="faq-item py-6 border-gray-200">
           <button
             type="button"
@@ -89,7 +68,6 @@ const sectionData = {
 </section>
 
 <script is:inline>
-  // Seleciona todos os itens do FAQ
   const faqButtons = document.querySelectorAll(".faq-question");
 
   faqButtons.forEach((button) => {
@@ -98,7 +76,6 @@ const sectionData = {
       const answer = parent.querySelector(".faq-answer");
       const icon = parent.querySelector(".faq-icon");
 
-      // Fecha outros itens (opcional)
       document.querySelectorAll(".faq-answer").forEach((el) => {
         if (el !== answer) el.classList.add("hidden");
       });
@@ -106,7 +83,6 @@ const sectionData = {
         if (el !== icon) el.classList.remove("rotate-45");
       });
 
-      // Alterna o item clicado
       answer.classList.toggle("hidden");
       icon.classList.toggle("rotate-45");
     });

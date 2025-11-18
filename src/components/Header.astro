@@ -1,9 +1,29 @@
 ---
 import Image from "astro/components/Image.astro";
-import logo from "../assets/images/logo-gravasteel.webp";
-import Button from "../components/ui/Button.astro";
-import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
 import { Icon } from "astro-icon/components";
+import Button from "../components/ui/Button.astro";
+
+export interface NavLink {
+  href: string;
+  text: string;
+}
+
+export interface Props {
+  logo: any;
+  links: NavLink[];
+  ctaDesktop: {
+    text: string;
+    href: string;
+  };
+  ctaMobile: {
+    text: string;
+    href: string;
+  };
+}
+
+
+
+const { logo, links, ctaDesktop, ctaMobile } = Astro.props;
 ---
 
 <nav
@@ -14,42 +34,34 @@ import { Icon } from "astro-icon/components";
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
       <a href="/" class="flex-shrink-0">
-        <Image src={logo} alt="Gravasteel" class="h-10 md:h-12 w-auto" />
+        <Image src={logo} alt="Logo" class="h-10 md:h-12 w-auto" />
       </a>
 
-      <!-- Links (Desktop) -->
+      <!-- Links Desktop -->
       <div class="hidden lg:flex items-center justify-center space-x-6">
-        {[
-          { href: "/#servicos", text: "Serviços" },
-          { href: "/#diferenciais", text: "Diferenciais" },
-          { href: "/#portfolio", text: "Portfolio" },
-          { href: "/#clientes", text: "Clientes" },
-          { href: "/#sobre", text: "Sobre" },
-          { href: "/#faq", text: "FAQ" },
-        ].map((item) => (
+        {links.map((item) => (
           <a
             href={item.href}
             class="relative px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors overflow-hidden group h-10 flex items-center"
           >
             <span
               class="relative z-10 block transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
-              >{item.text}</span
             >
+              {item.text}
+            </span>
             <span
               class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-gray-900"
-              >{item.text}</span
             >
+              {item.text}
+            </span>
           </a>
         ))}
       </div>
 
-      <!-- CTA (Desktop) -->
+      <!-- CTA Desktop -->
       <div class="hidden lg:inline-flex">
-        <Button
-          text="Fale conosco"
-          href="https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor."
-        >
-          <IconWhatsapp slot="icon" class="w-5 h-5 -ms-1" />
+        <Button text={ctaDesktop.text} href={ctaDesktop.href}>
+          <slot name="iconDesktop" />
         </Button>
       </div>
 
@@ -89,34 +101,25 @@ import { Icon } from "astro-icon/components";
 >
   <div class="px-6 py-8">
     <div class="space-y-1">
-      {[
-        { href: "/#servicos", text: "Serviços" },
-        { href: "/#diferenciais", text: "Diferenciais" },
-        { href: "/#portfolio", text: "Portfolio" },
-        { href: "/#clientes", text: "Clientes" },
-        { href: "/#sobre", text: "Sobre" },
-        { href: "/#faq", text: "FAQ" },
-      ].map((link) => (
+      {links.map((link) => (
         <a
           href={link.href}
           class="mobile-link block py-4 text-lg font-medium text-gray-700 hover:text-gray-900 border-b border-gray-100 transition-colors"
-          >{link.text}</a
         >
+          {link.text}
+        </a>
       ))}
     </div>
 
     <div class="flex mt-8">
-      <Button
-        text="Fale com um especialista"
-        href="https://calendly.com/ani-positivestudio/30min"
-        class="w-full"
-      >
-        <IconWhatsapp slot="icon" class="w-5 h-5 -ms-1" />
+      <Button text={ctaMobile.text} href={ctaMobile.href} class="w-full">
+        <slot name="iconMobile" />
       </Button>
     </div>
   </div>
 </div>
 
+<!-- Scripts -->
 <script is:inline>
   const navbar = document.getElementById("navbar");
   const btn = document.getElementById("mobile-menu-btn");
@@ -136,7 +139,6 @@ import { Icon } from "astro-icon/components";
     isMenuOpen = open;
 
     if (open) {
-      // Mostrar menu com animação
       menu.classList.remove("hidden");
       requestAnimationFrame(() => {
         menu.classList.remove("translate-y-[-10%]", "opacity-0");
@@ -146,34 +148,28 @@ import { Icon } from "astro-icon/components";
       overlay.classList.add("opacity-100", "pointer-events-auto");
       document.body.style.overflow = "hidden";
 
-      // Troca ícones
       iconOpen.classList.add("opacity-0", "scale-75");
       iconClose.classList.remove("opacity-0", "scale-75");
     } else {
-      // Esconder menu
       menu.classList.add("translate-y-[-10%]", "opacity-0");
       menu.classList.remove("translate-y-0", "opacity-100");
       overlay.classList.add("opacity-0", "pointer-events-none");
       overlay.classList.remove("opacity-100", "pointer-events-auto");
       document.body.style.overflow = "";
 
-      // Troca ícones
       iconOpen.classList.remove("opacity-0", "scale-75");
       iconClose.classList.add("opacity-0", "scale-75");
 
-      // Espera fim da animação antes de esconder
       setTimeout(() => {
         menu.classList.add("hidden");
       }, 300);
     }
   }
 
-  // Eventos
   btn?.addEventListener("click", toggleMenu);
   overlay?.addEventListener("click", toggleMenu);
   links.forEach((l) => l.addEventListener("click", () => open && toggleMenu()));
 
-  // Efeito de scroll na navbar
   function handleScroll() {
     const currentScrollY = window.scrollY;
     if (isMenuOpen) return;

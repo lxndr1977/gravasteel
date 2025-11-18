@@ -1,29 +1,35 @@
 ---
-import Services from '../components/Services.astro';
-import Faq from '../components/Faq.astro';
-import Clients from '../components/Clients.astro';
-import Resources from '../components/Resources.astro';
-import About from '../components/About.astro';
-import Gallery from '../components/Gallery.astro';
-import Hero from '../components/Hero.astro';
-import Layout from '../layouts/Layout.astro';
-import Benefits from '../components/Benefits.astro';
+import Services from "../components/Services.astro";
+import Faq from "../components/Faq.astro";
+import Clients from "../components/Clients.astro";
+import Resources from "../components/Resources.astro";
+import About from "../components/About.astro";
+import Gallery from "../components/Gallery.astro";
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import Benefits from "../components/Benefits.astro";
+import Header from "../components/Header.astro";
+import { pageData } from "../data/pages/home";
+
 ---
 
 <Layout>
-	 <Hero />
+
+   <Header {...pageData.navbarMenu} />
+
+   <Hero />
 
    <Services />
 
    <Benefits />
 
    <Resources />
-   
-   <Gallery />
-   
+
+   <Gallery {...pageData.gallery}  />
+
    <Clients />
-   
+
    <About />
-   
-   <Faq />
+
+   <Faq {...pageData.faq} />
 </Layout>
