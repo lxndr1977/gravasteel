@@ -1,11 +1,11 @@
 // src/data/pages/home.ts
 import img1 from "../../assets/images/portfolio/gravasteel-portfolio-01.webp";
-import img2 from "../../assets/images/portfolio/gravasteel-portfolio-02.webp";
+import img2 from "../../assets/images/portfolio/gravasteel-portfolio-08.webp";
 import img3 from "../../assets/images/portfolio/gravasteel-portfolio-03.webp";
 import img4 from "../../assets/images/portfolio/gravasteel-portfolio-04.webp";
-import img5 from "../../assets/images/portfolio/gravasteel-portfolio-05.webp";
+import img5 from "../../assets/images/portfolio/gravasteel-portfolio-11.webp";
 import img6 from "../../assets/images/portfolio/gravasteel-portfolio-06.webp";
-import img7 from "../../assets/images/portfolio/gravasteel-portfolio-07.webp";
+import img7 from "../../assets/images/portfolio/gravasteel-portfolio-17.webp";
 import img8 from "../../assets/images/portfolio/gravasteel-portfolio-08.webp";
 import img9 from "../../assets/images/portfolio/gravasteel-portfolio-09.webp";
 import img10 from "../../assets/images/portfolio/gravasteel-portfolio-10.webp";
@@ -14,7 +14,7 @@ import logo from "../../assets/images/logo-gravasteel.webp";
 import IconWhatsapp from "../../assets/icons/brand-whatsapp.svg";
 
 export const pageData = {
-
+ 
   navbarMenu: {
       logo,
       links: [
