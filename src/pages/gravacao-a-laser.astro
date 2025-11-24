@@ -13,7 +13,6 @@ import About from "../components/About.astro";
 import Faq from "../components/Faq.astro";
 import Footer from "../components/Footer.astro";
 
-
 import { pageData } from "../data/pages/gravacao-a-laser";
 
 import Background from "../assets/images/gravasteel-background-01.webp";
@@ -53,6 +52,7 @@ import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
          <Button
             text={pageData.hero.buttonText}
             href={pageData.hero.buttonLink}
+            target="_blank"
          >
             <IconWhatsapp slot="icon" class="w-5 h-5 -ms-1" />
          </Button>
@@ -83,7 +83,7 @@ import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
 
    <Featured id="aplicacoes" {...pageData.applications} />
 
-   <Gallery {...pageData.gallery }  />
+   <Gallery {...pageData.gallery} />
 
    <Clients />
 
@@ -92,5 +92,4 @@ import IconWhatsapp from "../assets/icons/brand-whatsapp.svg";
    <Faq {...pageData.faq} />
 
    <Footer navLinks={pageData.footer.menu} />
-
 </Layout>

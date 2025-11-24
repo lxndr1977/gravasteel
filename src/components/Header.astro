@@ -4,210 +4,220 @@ import { Icon } from "astro-icon/components";
 import Button from "../components/ui/Button.astro";
 
 export interface NavLink {
-  href: string;
-  text: string;
+   href: string;
+   text: string;
 }
 
 export interface Props {
-  logo: any;
-  links: NavLink[];
-  ctaDesktop: {
-    text: string;
-    href: string;
-  };
-  ctaMobile: {
-    text: string;
-    href: string;
-  };
+   logo: any;
+   links: NavLink[];
+   ctaDesktop: {
+      text: string;
+      href: string;
+   };
+   ctaMobile: {
+      text: string;
+      href: string;
+   };
 }
-
-
 
 const { logo, links, ctaDesktop, ctaMobile } = Astro.props;
 ---
 
 <nav
-  id="navbar"
-  class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-zinc-50 rounded-lg shadow-md z-50 transition-all duration-500 ease-in-out"
+   id="navbar"
+   class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-zinc-50 rounded-lg shadow-md z-50 transition-all duration-500 ease-in-out"
 >
-  <div class="px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="/" class="flex-shrink-0">
-        <Image src={logo} alt="Logo" class="h-10 md:h-12 w-auto" />
-      </a>
+   <div class="px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+         <!-- Logo -->
+         <a href="/" class="flex-shrink-0">
+            <Image src={logo} alt="Logo" class="h-10 md:h-12 w-auto" />
+         </a>
 
-      <!-- Links Desktop -->
-      <div class="hidden lg:flex items-center justify-center space-x-6">
-        {links.map((item) => (
-          <a
-            href={item.href}
-            class="relative px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors overflow-hidden group h-10 flex items-center"
-          >
-            <span
-              class="relative z-10 block transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0"
+         <!-- Links Desktop -->
+         <div class="hidden lg:flex items-center justify-center space-x-6">
+            {
+               links.map((item) => (
+                  <a
+                     href={item.href}
+                     class="relative px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors overflow-hidden group h-10 flex items-center"
+                  >
+                     <span class="relative z-10 block transition-transform duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                        {item.text}
+                     </span>
+                     <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-gray-900">
+                        {item.text}
+                     </span>
+                  </a>
+               ))
+            }
+         </div>
+
+         <!-- CTA Desktop -->
+         <div class="hidden lg:inline-flex">
+            <Button
+               text={ctaDesktop.text}
+               href={ctaDesktop.href}
+               target="_blank"
             >
-              {item.text}
-            </span>
-            <span
-              class="absolute inset-0 flex items-center justify-center translate-y-full transition-all duration-300 group-hover:translate-y-0 text-gray-900"
-            >
-              {item.text}
-            </span>
-          </a>
-        ))}
-      </div>
+               <slot name="iconDesktop" />
+            </Button>
+         </div>
 
-      <!-- CTA Desktop -->
-      <div class="hidden lg:inline-flex">
-        <Button text={ctaDesktop.text} href={ctaDesktop.href}>
-          <slot name="iconDesktop" />
-        </Button>
+         <!-- Botão Mobile -->
+         <button
+            id="mobile-menu-btn"
+            class="lg:hidden p-2 -mr-2 relative flex items-center justify-center"
+            aria-label="Abrir menu"
+         >
+            <Icon
+               id="icon-open"
+               name="heroicons:bars-3-bottom-right"
+               class="w-7 h-7 text-zinc-900 transition-all duration-300"
+            />
+            <Icon
+               id="icon-close"
+               name="heroicons:x-mark"
+               class="w-7 h-7 text-zinc-900 absolute opacity-0 scale-75 transition-all duration-300"
+            />
+         </button>
       </div>
-
-      <!-- Botão Mobile -->
-      <button
-        id="mobile-menu-btn"
-        class="lg:hidden p-2 -mr-2 relative flex items-center justify-center"
-        aria-label="Abrir menu"
-      >
-        <Icon
-          id="icon-open"
-          name="heroicons:bars-3-bottom-right"
-          class="w-7 h-7 text-zinc-900 transition-all duration-300"
-        />
-        <Icon
-          id="icon-close"
-          name="heroicons:x-mark"
-          class="w-7 h-7 text-zinc-900 absolute opacity-0 scale-75 transition-all duration-300"
-        />
-      </button>
-    </div>
-  </div>
+   </div>
 </nav>
 
 <!-- Overlay -->
 <div
-  id="menu-overlay"
-  class="fixed inset-0 bg-black/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 z-40"
-></div>
+   id="menu-overlay"
+   class="fixed inset-0 bg-black/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 z-40"
+>
+</div>
 
 <!-- Menu Mobile -->
 <div
-  id="mobile-menu"
-  class="hidden lg:hidden fixed left-1/2 -translate-x-1/2 top-[calc(5rem+1.5rem)] 
-         w-[95%] max-w-7xl bg-white z-50 transform translate-y-[-10%] opacity-0 
+   id="mobile-menu"
+   class="hidden lg:hidden fixed left-1/2 -translate-x-1/2 top-[calc(5rem+1.5rem)]
+         w-[95%] max-w-7xl bg-white z-50 transform translate-y-[-10%] opacity-0
          transition-all duration-500 ease-in-out rounded-2xl shadow-xl border border-gray-200"
 >
-  <div class="px-6 py-8">
-    <div class="space-y-1">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class="mobile-link block py-4 text-lg font-medium text-gray-700 hover:text-gray-900 border-b border-gray-100 transition-colors"
-        >
-          {link.text}
-        </a>
-      ))}
-    </div>
+   <div class="px-6 py-8">
+      <div class="space-y-1">
+         {
+            links.map((link) => (
+               <a
+                  href={link.href}
+                  class="mobile-link block py-4 text-lg font-medium text-gray-700 hover:text-gray-900 border-b border-gray-100 transition-colors"
+               >
+                  {link.text}
+               </a>
+            ))
+         }
+      </div>
 
-    <div class="flex mt-8">
-      <Button text={ctaMobile.text} href={ctaMobile.href} class="w-full">
-        <slot name="iconMobile" />
-      </Button>
-    </div>
-  </div>
+      <div class="flex mt-8">
+         <Button
+            text={ctaMobile.text}
+            href={ctaMobile.href}
+            class="w-full"
+            target="_blank"
+         >
+            <slot name="iconMobile" />
+         </Button>
+      </div>
+   </div>
 </div>
 
 <!-- Scripts -->
 <script is:inline>
-  const navbar = document.getElementById("navbar");
-  const btn = document.getElementById("mobile-menu-btn");
-  const menu = document.getElementById("mobile-menu");
-  const overlay = document.getElementById("menu-overlay");
-  const links = document.querySelectorAll(".mobile-link");
-  const iconOpen = document.getElementById("icon-open");
-  const iconClose = document.getElementById("icon-close");
+   const navbar = document.getElementById("navbar");
+   const btn = document.getElementById("mobile-menu-btn");
+   const menu = document.getElementById("mobile-menu");
+   const overlay = document.getElementById("menu-overlay");
+   const links = document.querySelectorAll(".mobile-link");
+   const iconOpen = document.getElementById("icon-open");
+   const iconClose = document.getElementById("icon-close");
 
-  let open = false;
-  let lastScrollY = window.scrollY;
-  const scrollThreshold = 100;
-  let isMenuOpen = false;
+   let open = false;
+   let lastScrollY = window.scrollY;
+   const scrollThreshold = 100;
+   let isMenuOpen = false;
 
-  function toggleMenu() {
-    open = !open;
-    isMenuOpen = open;
+   function toggleMenu() {
+      open = !open;
+      isMenuOpen = open;
 
-    if (open) {
-      menu.classList.remove("hidden");
-      requestAnimationFrame(() => {
-        menu.classList.remove("translate-y-[-10%]", "opacity-0");
-        menu.classList.add("translate-y-0", "opacity-100");
-      });
-      overlay.classList.remove("opacity-0", "pointer-events-none");
-      overlay.classList.add("opacity-100", "pointer-events-auto");
-      document.body.style.overflow = "hidden";
+      if (open) {
+         menu.classList.remove("hidden");
+         requestAnimationFrame(() => {
+            menu.classList.remove("translate-y-[-10%]", "opacity-0");
+            menu.classList.add("translate-y-0", "opacity-100");
+         });
+         overlay.classList.remove("opacity-0", "pointer-events-none");
+         overlay.classList.add("opacity-100", "pointer-events-auto");
+         document.body.style.overflow = "hidden";
 
-      iconOpen.classList.add("opacity-0", "scale-75");
-      iconClose.classList.remove("opacity-0", "scale-75");
-    } else {
-      menu.classList.add("translate-y-[-10%]", "opacity-0");
-      menu.classList.remove("translate-y-0", "opacity-100");
-      overlay.classList.add("opacity-0", "pointer-events-none");
-      overlay.classList.remove("opacity-100", "pointer-events-auto");
-      document.body.style.overflow = "";
-
-      iconOpen.classList.remove("opacity-0", "scale-75");
-      iconClose.classList.add("opacity-0", "scale-75");
-
-      setTimeout(() => {
-        menu.classList.add("hidden");
-      }, 300);
-    }
-  }
-
-  btn?.addEventListener("click", toggleMenu);
-  overlay?.addEventListener("click", toggleMenu);
-  links.forEach((l) => l.addEventListener("click", () => open && toggleMenu()));
-
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    if (isMenuOpen) return;
-
-    if (currentScrollY > scrollThreshold) {
-      if (currentScrollY > lastScrollY) {
-        navbar.classList.remove("top-4", "rounded-lg");
-        navbar.classList.add("top-0");
-        navbar.style.transform = "translateY(-120%)";
+         iconOpen.classList.add("opacity-0", "scale-75");
+         iconClose.classList.remove("opacity-0", "scale-75");
       } else {
-        navbar.style.transform = "translateY(0)";
-        navbar.classList.remove("rounded-lg");
-        navbar.classList.add(
-          "top-0",
-          "rounded-b-lg",
-          "shadow-lg",
-          "border-b",
-          "border-zinc-200"
-        );
+         menu.classList.add("translate-y-[-10%]", "opacity-0");
+         menu.classList.remove("translate-y-0", "opacity-100");
+         overlay.classList.add("opacity-0", "pointer-events-none");
+         overlay.classList.remove("opacity-100", "pointer-events-auto");
+         document.body.style.overflow = "";
+
+         iconOpen.classList.remove("opacity-0", "scale-75");
+         iconClose.classList.add("opacity-0", "scale-75");
+
+         setTimeout(() => {
+            menu.classList.add("hidden");
+         }, 300);
       }
-    } else {
-      navbar.style.transform = "translateY(0)";
-      navbar.classList.remove(
-        "shadow-lg",
-        "border-b",
-        "border-zinc-200",
-        "rounded-b-lg",
-        "top-0"
-      );
-      navbar.classList.add("top-4", "rounded-lg");
-    }
+   }
 
-    lastScrollY = currentScrollY;
-  }
+   btn?.addEventListener("click", toggleMenu);
+   overlay?.addEventListener("click", toggleMenu);
+   links.forEach((l) =>
+      l.addEventListener("click", () => open && toggleMenu()),
+   );
 
-  let scrollTimeout;
-  window.addEventListener("scroll", () => {
-    if (scrollTimeout) clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(handleScroll, 10);
-  });
+   function handleScroll() {
+      const currentScrollY = window.scrollY;
+      if (isMenuOpen) return;
+
+      if (currentScrollY > scrollThreshold) {
+         if (currentScrollY > lastScrollY) {
+            navbar.classList.remove("top-4", "rounded-lg");
+            navbar.classList.add("top-0");
+            navbar.style.transform = "translateY(-120%)";
+         } else {
+            navbar.style.transform = "translateY(0)";
+            navbar.classList.remove("rounded-lg");
+            navbar.classList.add(
+               "top-0",
+               "rounded-b-lg",
+               "shadow-lg",
+               "border-b",
+               "border-zinc-200",
+            );
+         }
+      } else {
+         navbar.style.transform = "translateY(0)";
+         navbar.classList.remove(
+            "shadow-lg",
+            "border-b",
+            "border-zinc-200",
+            "rounded-b-lg",
+            "top-0",
+         );
+         navbar.classList.add("top-4", "rounded-lg");
+      }
+
+      lastScrollY = currentScrollY;
+   }
+
+   let scrollTimeout;
+   window.addEventListener("scroll", () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 10);
+   });
 </script>

@@ -49,7 +49,7 @@ export const pageData = {
       },
       ctaMobile: {
          text: "Fale com um especialista",
-         href: "https://calendly.com/ani-positivestudio/30min",
+         href: "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       iconComponent: IconWhatsapp, // ícone compartilhado
    },

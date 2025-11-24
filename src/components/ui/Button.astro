@@ -3,6 +3,7 @@ interface Props {
    id?: string;
    text: string;
    href?: string;
+   target?: string;
    variant?: "default" | "light";
    class?: string;
 }
@@ -12,6 +13,7 @@ const {
    text,
    href = "#",
    variant = "default",
+   target = "_self",
    class: extraClass = "",
 }: Props = Astro.props;
 
@@ -27,7 +29,7 @@ const variants: Record<"default" | "light", string> = {
 const classes = `${baseClasses} ${variants[variant]} ${extraClass}`.trim();
 ---
 
-<a id={id} href={href} class={classes}>
+<a id={id} href={href} target={target} class={classes}>
    <!-- Estado inicial -->
    <span
       class="px-8 py-3 relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:-translate-y-full"
