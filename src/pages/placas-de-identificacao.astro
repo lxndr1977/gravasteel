@@ -14,6 +14,7 @@ import About from "../components/About.astro";
 import Faq from "../components/Faq.astro";
 import Benefits from "../components/blocks/benefits.astro";
 import Featured from "../components/blocks/featured.astro";
+import Footer from "../components/Footer.astro";
 
 import Image from "astro/components/Image.astro";
 ---
@@ -78,7 +79,7 @@ import Image from "astro/components/Image.astro";
       </div>
    </div>
 
-   <Benefits title={pageData.benefits.title} items={pageData.benefits.items} />
+   <Benefits id="aplicacoes" title={pageData.benefits.title} items={pageData.benefits.items} />
 
    <Featured {...pageData.applications} />
 
@@ -93,4 +94,7 @@ import Image from "astro/components/Image.astro";
    <About />
 
    <Faq {...pageData.faq} />
+
+   <Footer navLinks={pageData.footer.menu} />
+
 </Layout>

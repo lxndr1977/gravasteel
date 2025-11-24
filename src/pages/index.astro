@@ -9,6 +9,7 @@ import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import Benefits from "../components/Benefits.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { pageData } from "../data/pages/home";
 
 ---
@@ -32,4 +33,7 @@ import { pageData } from "../data/pages/home";
    <About />
 
    <Faq {...pageData.faq} />
+
+   <Footer navLinks={pageData.footer.menu} />
+
 </Layout>
