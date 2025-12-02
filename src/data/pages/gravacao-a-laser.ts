@@ -45,11 +45,11 @@ export const pageData = {
       ctaDesktop: {
          text: "Fale conosco",
          href:
-            "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+            "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       ctaMobile: {
          text: "Fale com um especialista",
-         href: "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+         href: "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       iconComponent: IconWhatsapp, // ícone compartilhado
    },
@@ -110,7 +110,7 @@ export const pageData = {
          {
             title: "Matrizarias e ferramentarias",
             description:
-               "Gravações técnicas para identificação de cavidades, ajustes, medidas, referências e componentes de moldes.",
+               "Gravações técnicas para identificação de cavidades, referências e informações em geral, garantindo alta qualidade e respeito ao posicionamento dos projetos.",
          },
          {
             title: "Usinagem e ferramentarias de precisão",
@@ -136,11 +136,6 @@ export const pageData = {
             title: "Branding e personalização de produtos",
             description:
                "Gravação de marcas, logos e identidades visuais em peças, acessórios e componentes para agregar valor ao produto.",
-         },
-         {
-            title: "Logística e armazenamento",
-            description:
-               "Identificação permanente de racks, caixas, contêineres, carrinhos e peças utilizadas na produção ou movimentação.",
          },
          {
             title: "Equipamentos especiais ou sob medida",

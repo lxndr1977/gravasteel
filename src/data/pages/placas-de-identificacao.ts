@@ -23,11 +23,11 @@ export const pageData = {
 
    hero: {
       image: imgHero,
-      title: "Placas de Identificação em Aço Inox (420) com Gravação a Laser",
-      subtitle: " Grave informações técnicas, números de série, instruções de operação, logos e selos de garantia em placas inoxidáveis projetadas para resistir a uso intenso, abrasão e condições severas.",
+      title: "Placas de Identificação em Aço Inox (420) e Alumínio",
+      subtitle: " Identifique informações técnicas, números de série, instruções de operação, logos e selos de garantia em placas inoxidáveis projetadas para resistir a uso intenso, abrasão e condições severas.",
       buttonText: "Fale com um especialista",
       buttonLink:
-         "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+         "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
    },
 
    gallery: {
@@ -60,13 +60,13 @@ export const pageData = {
       ctaDesktop: {
          text: "Fale conosco",
          href:
-            "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+            "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       ctaMobile: {
          text: "Fale com um especialista",
-         href: "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+         href: "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
-      iconComponent: IconWhatsapp, 
+      iconComponent: IconWhatsapp,
    },
 
    benefits: {
@@ -76,13 +76,13 @@ export const pageData = {
             icon: "heroicons:shield-check",
             title: "Durabilidade extrema",
             description:
-               "Inox 420 escovado resistente à corrosão, impacto e temperatura — legibilidade garantida por anos.",
+               "Placas resistentes à corrosão, impacto e temperatura - legibilidade garantida por anos.",
          },
          {
             icon: "heroicons:qr-code",
             title: "Leitura permanente",
             description:
-               "Gravação a laser que não desbota e mantém contraste perfeito mesmo em ambientes industriais severos.",
+               "Gravação e impreessão que não desbotam e mantém contraste perfeito mesmo em ambientes industriais severos.",
          },
          {
             icon: "heroicons:viewfinder-circle",
@@ -106,7 +106,7 @@ export const pageData = {
       items: [
          {
             title: "Matrizarias e ferramentarias",
-            description: "Gravações técnicas para identificação de componentes, ajustes, medidas e informações essenciais para o uso e manutenção dos moldes.",
+            description: "Identificação de moldes com informações técnicas.",
          },
          {
             title: "Fabricantes de máquinas e equipamentos",
@@ -121,8 +121,8 @@ export const pageData = {
             description: "Identificação de processos, equipamentos, ordens de produção e componentes sujeitos a ambientes severos.",
          },
          {
-            title: "Frigoríficos e laticínios",
-            description: "Marcações resistentes à umidade, agentes de limpeza e processos de higienização industrial.",
+            title: "Mobiliário corporativo e bens patrimoniais",
+            description: "Placas patrimoniais para móveis, equipamentos e ativos, com gravação durável para controle e inventário.",
          },
          {
             title: "Construção civil e esquadrias",

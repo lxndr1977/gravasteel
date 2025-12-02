@@ -1,8 +1,18 @@
 ---
+import { pageData } from "../data/pages/home";
+
 import Layout from "../layouts/Layout.astro";
+
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="Política de Privacidade">
+
+      <Header {...pageData.navbarMenu} />
+
    <div
       class="max-w-3xl mx-auto px-4 lg:px-8 w-full lg:w-[95%] pt-18 pb:12 lg:py-32 space-y-6"
    >
@@ -218,4 +228,7 @@ import Layout from "../layouts/Layout.astro";
          </ul>
       </section>
    </div>
+
+      <Footer navLinks={pageData.footer.menu} />
+
 </Layout>

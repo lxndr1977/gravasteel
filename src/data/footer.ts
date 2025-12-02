@@ -3,18 +3,18 @@ import logo from "../assets/images/logo-gravasteel.webp";
 export const footerBase = {
   logo,
   description:
-    "Mais de 15 anos de excelência em gravações a laser de alta precisão. Vamos conversar sobre o seu projeto?",
+    "Mais de 15 anos de experiência na indústria. Vamos conversar sobre o seu projeto?",
   email: "administrativo@gravasteel.com.br",
   phone: "(54) 93618-3497",
   address: "Av. Avenida França 1177, Loja 01",
   city: "Caxias do Sul, Rio Grande do Sul",
   zipcode: "CEP 95076-000",
-  mapLink: "https://maps.app.goo.gl/cxJydAZkZMkmFhaN8",
-  hours: "Seg a Sex, das 8h às 18h",
+  mapLink: "https://maps.app.goo.gl/79hQ6RCXpahdbwS17",
+  hours: "Seg a Sex, das 8h às 17h30",
   socials: [
     {
       name: "Instagram",
-      href: "https://instagram.com/gravasteel",
+      href: "https://instagram.com/gravasteel_",
       icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
     },
     {

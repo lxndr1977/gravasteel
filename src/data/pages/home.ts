@@ -19,7 +19,7 @@ import IconWhatsapp from "../../assets/icons/brand-whatsapp.svg";
 export const pageData = {
  
   navbarMenu: {
-      logo,
+      logo, 
       links: [
          { href: "/#servicos", text: "Serviços" },
          { href: "/#diferenciais", text: "Diferenciais" },
@@ -31,11 +31,11 @@ export const pageData = {
       ctaDesktop: {
          text: "Fale conosco",
          href:
-            "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+            "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       ctaMobile: {
          text: "Fale com um especialista",
-         href: "https://wa.me/5554981171189?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
+         href: "https://wa.me/5554936183497?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20vendedor.",
       },
       iconComponent: IconWhatsapp, // ícone compartilhado
    },
