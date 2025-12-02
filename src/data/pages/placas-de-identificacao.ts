@@ -82,7 +82,7 @@ export const pageData = {
             icon: "heroicons:qr-code",
             title: "Leitura permanente",
             description:
-               "Gravação e impreessão que não desbotam e mantém contraste perfeito mesmo em ambientes industriais severos.",
+               "Gravação e impreessão que não desbotam e resistentes mesmo em ambientes industriais severos.",
          },
          {
             icon: "heroicons:viewfinder-circle",
